@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Intro to the Web</title>
+    <link>https://www.webintro2021.ca/posts/</link>
+    <description>Recent content in Posts on Intro to the Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 16 Mar 2021 08:47:11 +0100</lastBuildDate>
+    
+	<atom:link href="https://www.webintro2021.ca/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Optimization</title>
+      <link>https://www.webintro2021.ca/posts/the-8th-week/</link>
+      <pubDate>Tue, 16 Mar 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-8th-week/</guid>
+      <description>Whether you&amp;rsquo;re driven by ethics or the almighty dollar, great web performance is a must. Today we&amp;rsquo;ll start learning how to deliver high-performance web applications, and the impact performance has on search engine optimization. We&amp;rsquo;ll see how we can measure performance in the browser dev tools, and start by looking at the biggest opportunity for performance boosts: images.</description>
+    </item>
+    
+    <item>
+      <title>Design &amp; Development Workflow</title>
+      <link>https://www.webintro2021.ca/posts/the-7th-week/</link>
+      <pubDate>Mon, 08 Mar 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-7th-week/</guid>
+      <description>Today we learn about the lifecycle of a web-based project. We&amp;rsquo;ll look at all the possible stages of a project, whether big or small.</description>
+    </item>
+    
+    <item>
+      <title>Layout Part 2: Responsive workflow</title>
+      <link>https://www.webintro2021.ca/posts/the-6th-week/</link>
+      <pubDate>Tue, 23 Feb 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-6th-week/</guid>
+      <description>Today we&amp;rsquo;ll build a responsive web page using flexbox.</description>
+    </item>
+    
+    <item>
+      <title>CSS Layout Part 1</title>
+      <link>https://www.webintro2021.ca/posts/the-5th-week/</link>
+      <pubDate>Wed, 10 Feb 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-5th-week/</guid>
+      <description>This week we&amp;rsquo;ll learn about mobile-first design techniques &amp;amp; media queries; how HTML flows by default, positioning in CSS, and the float property.</description>
+    </item>
+    
+    <item>
+      <title>CSS Intro Part 2</title>
+      <link>https://www.webintro2021.ca/posts/the-4th-week/</link>
+      <pubDate>Sun, 07 Feb 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-4th-week/</guid>
+      <description>Today we&amp;rsquo;ll get to practice our CSS (and learn a few more tricks) by building a menu. We&amp;rsquo;ll get an introduction to browser dev tools, a basic CSS reset, fonts in CSS, and how to style a menu with :pseudo selectors.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to CSS</title>
+      <link>https://www.webintro2021.ca/posts/the-3rd-week/</link>
+      <pubDate>Sun, 31 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-3rd-week/</guid>
+      <description>Today we&amp;rsquo;ll look at what CSS is, how it operates, where to put it, how to write CSS rules, and how to validate our CSS.</description>
+    </item>
+    
+    <item>
+      <title>Markup Pt 2: documents, semantics, layout</title>
+      <link>https://www.webintro2021.ca/posts/the-2nd-week/</link>
+      <pubDate>Sat, 23 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-2nd-week/</guid>
+      <description>This week we&amp;rsquo;ll learn about all the components of a full HTML file, HTML5 semantic elements, accessibility, block/inline elements and more complex elements including &amp;lsquo;img&amp;rsquo; and &amp;lsquo;table&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>Introduction / Markup Part 1: Content</title>
+      <link>https://www.webintro2021.ca/posts/the-1st-week/</link>
+      <pubDate>Wed, 06 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/posts/the-1st-week/</guid>
+      <description>Today we learn about the course, and take our first foray into Hypertext Markup Language.</description>
+    </item>
+    
+  </channel>
+</rss>

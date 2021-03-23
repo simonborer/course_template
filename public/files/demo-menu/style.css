@@ -1,0 +1,28 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+.section--page {
+    min-height: 55vh;
+    padding: 2rem 1rem 1rem;
+}
+.section--page:nth-of-type(odd) {
+    background: #d5d5d5;
+}
+.nav {
+    padding: 0;
+}
+.nav__item {
+    list-style:none;
+    display: inline-block;
+}
+.nav__link {
+    padding: 1rem;   
+}
+.nav__link:hover {
+    background: purple;
+    color: white;
+}
+.my-excellent-class {
+    font-size: 2rem;
+    color: red;
+}

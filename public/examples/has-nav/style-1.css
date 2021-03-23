@@ -1,0 +1,49 @@
+.my-div {
+    height: 5rem;
+    width: 5rem;
+    border: 1px solid;
+}
+
+.my-first-div {
+    background: blue;
+}
+
+.my-second-div {
+    background: green;
+}
+
+.my-third-div {
+	background: red;
+}
+
+@media (min-width: 400px) {
+    .my-first-div {
+        background: red;
+    }
+
+    .my-second-div {
+        background: orange;
+    }
+}
+
+@media (min-width: 800px) {
+    .my-first-div {
+        background: yellow;
+    }
+
+    .my-second-div {
+        background: coral;
+    }
+}
+
+@media (min-width: 1200px) {
+    .my-first-div {
+        background: darkgrey;
+    }
+    .my-second-div {
+        background: black;
+    }
+    .my-third-div {
+    	background: lightblue;
+    }
+}

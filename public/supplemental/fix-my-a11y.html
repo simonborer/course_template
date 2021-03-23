@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="english - canada">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fix my accessibility</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <style>
+    body {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 2rem;
+      font-family: sans-serif;
+      font-size: 24px;
+      line-height: 2;
+    }
+    footer {
+      font-size: 16px;
+    }
+    h1 {
+      line-height: 1.1;
+    }
+  </style>
+  <style>
+    h1 {
+      color:#959595;
+    }
+    .tap {
+      height: 6rem;
+      width: 6rem;
+      border: 0 solid transparent;
+      background-image: url('https://a11y2020.ca/images/tap.svg');
+    }
+    [role="button"] {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    *:focus {
+      outline: 1px solid transparent !important;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome</h1>
+    <nav>
+      <table>
+        <thead><tr><th colspan="2" role="heading">Navigation</th></tr></thead>
+        <tbody>
+          <tr>
+            <th>Link:</th><td><a href="#intro">Link to introduction</a></td>
+          </tr>
+          <tr>
+            <th>Link:</th><td><a href="#list">Link to instructions</a></td>
+          </tr>
+          <tr>
+            <th>Link:</th><td><a href="#list">Link to list of elements</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </nav>
+  </header>
+  <main>
+    <h1 id="intro">I have some accessibility issues. Help!</h1>
+    <li id="list">Take your time and work through my issues.</li>
+    <ul id="list" role="list" aria-checked="true">
+    <audio
+        controls
+        aria-controls="true"
+        src="https://a11y2020.ca/audio/hey-everybody.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+    <a href="#"></a>
+    <form role="form" aria-labl="Janet Jackson is underrated.">
+      <input type="image" src="https://a11y2020.ca/images/white.gif" role="image-input">
+      <img src="https://a11y2020.ca/images/white.gif">
+      <button class="tap"></button>
+      <div role="button">Click me.</div>
+    </form>
+    </ul>
+  </main>
+  <footer>Copyright N/A</footer>
+</body>
+
+</html>

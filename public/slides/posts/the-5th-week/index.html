@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/svg+xml" href="/images/browser.svg">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="manifest" href="/images/site.webmanifest">
+	<title>CSS Layout Part 1</title>
+	<meta name="description" content="2021 Humber Web Intro Course">
+	<meta name="author" content="Simon Borer">
+	
+
+<link rel="stylesheet" href="https://www.webintro2021.ca/sass/slides/main-slides.min.fb1f4c99f617f84e6338ad66926fd25d0c7d237e0133925673b14d93674cbc65.css">
+
+</head>
+<body>
+	
+<div class="reveal">
+  <div class="slides">
+    <div class="body-spacer--small"></div>
+<h2 class="title">CSS Layout Part 1</h2>
+<section>
+    <p style="margin: 2rem 0; font-size: 1.25em;">This week we&#39;ll learn about mobile-first design techniques &amp; media queries; how HTML flows by default, positioning in CSS, and the float property.</p>
+</section>
+<section>
+    <h3>Table of Contents</h3>
+    <ul>
+        <li><a href="#devTools">Dev Tools</a></li>
+        <li><a href="#mobile">Mobile-First</a></li>
+        <li><a href="#normalFlow">Normal layout flow</a></li>
+        <li><a href="#position">CSS positioning</a></li>
+        <li><a href="#zIndex">CSS layering with z-index</a></li>
+        <li><a href="#floats">CSS text wrapping with float</a>
+    </ul>
+</section>
+<div class="body-spacer"></div>
+<section id="devTools">
+    <img src="/images/tools.svg" alt="" class="body-icon">
+    <h2 style="margin-top: 0">Remember Dev Tools from last week?</h2>
+</section>
+<section>
+    <p><strong>Open</strong> up the page you built for last week's assignment.</p>
+    <p><strong>Right-click</strong> anywhere on the page, and <strong>choose "inspect"</strong>.</p>
+    <img src="/images/inspect.png" alt="">
+</section>
+<section>
+    <p>You'll have a window pop up. These are your "browser tools", also known as the "dev tools".</p>
+    <figure>
+        <a href="/images/inspected.png" target="_blank"><img src="/images/inspected.png" alt=""></a>
+        <figcaption class="text-center">You might need to choose "Elements" from the tabs at the top to see what I'm seeing.</figcaption>
+    </figure>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">Dev tools mobile emulator</h3>
+    <p>There's a <em>ton</em> of tools in the dev tools, but I just want to show you one today. There's button in the top-left (top-right if you're in Firefox) of the dev tools that kinda looks like <strong>a phone and a tablet</strong>.</p>
+</section>
+<section>
+    <a href="/images/mobileEmulator.png" target="_blank"><img src="/images/mobileEmulator.png" alt=""></a>
+    <p>If you <strong>click on that button</strong>, you can your site rendered in a kind of a <strong>mock-up</strong> of different devices.</p>
+</section>
+<section>
+    <p>Do this now, and <strong>choose 'iPhone X'</strong> from the dropdown.</p>
+    <p>Your page looks kinda weird and tiny, doesn't it?</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">The viewport meta tag</h3>
+    <img src="/images/viewport.svg" alt="" class="body-icon">
+</section>
+<section>
+    <p>Remember three weeks ago when I said there were a bunch of different meta tags, and you were like, "<strong>Oh man, I can't wait until we learn about more meta tags</strong>!"</p>
+    <p>Well, the wait is over. I'd like to introduce you to a meta tag that you should <strong>put in all your html documents</strong>:</p>
+    <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"></code></pre>
+</section>
+<section>
+    <p>There's an <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag" target="_blank">in-depth explanation<span class="show-for-sr"> Opens in a new window</span></a> for why this meta tag is necessary, but essentially what it does is tell the browser "<strong>I've built this page so that it works with different screen sizes</strong>".</p>
+    <ul class="steps">
+        <li>I suggest you add the viewport meta tag to your html file. Put it <strong>in the head</strong> before the stylesheets.</li>
+    </ul>
+</section>
+<div class="body-spacer"></div>
+<section id="mobile">
+    <img src="/images/moving.svg" alt="" class="body-icon">
+    <h2>Mobile-first</h2>
+    <p>You may have heard of <strong>'responsive' websites</strong>. That just means that our content works well at all screen sizes - <strong>growing or shrinking</strong> content, and <strong>moving around the layout</strong> in order to be easy to use on the smallest phone, the biggest monitor or the most... medium-sized iPad.</p>
+</section>
+<section>
+    <p><strong>Mobile-first</strong> is a design & development technique that says we should design and build at the <strong>smallest size first</strong>, and then add rules where needed <strong>as the viewport expands</strong>.</p>
+    <p>This makes life easier for the same reason that <strong>it's easier to move from a small apartment to a big house</strong>, rather than from a big house to a small apartment.</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">Media queries</h3>
+    <img src="/images/query.svg" alt="" class="body-icon body-icon--small">
+</section>
+<section>
+    <p>You've already got some excellent techniques for writing HTML & CSS that flows perfectly into any viewport size - semantic code, responsive units like <code>vw</code> and <code>vh</code> - and starting next week we'll learn how to make elegant, fluid layouts.</p>
+    <p>But when your content doesn't respond natively, the go-to method for writing <strong>different rules for different viewport widths</strong> is a CSS media query.</p>
+</section>
+<section>
+    <p>The syntax is simple:</p>
+    <pre><code class="language-css">@media (min-width: 40rem) {
+    .my-excellent-class {
+        background: green;
+    }
+}</code></pre>
+</section>
+<section>
+    <p>Media queries are included in your stylesheet <em><strong>at the end</strong>, to avoid specificity issues</em>.</p>
+</section>
+<section>
+    <p>If you're following along with your HTML file open, do the following:</p>
+    <ul class="steps">
+        <li>Rewrite the <code>display</code> property for the <code>nav__item</code> class to be <code class="language-css">display: block;</code></li>
+        <li>Add a <code>display</code> property to your <code>nav__link</code> class, and make the value <code class="language-css">display: block;</code></li>
+        <li>Add the following code to the <strong>bottom</strong> of your css file:</li>
+    </ul>
+    <pre><code class="language-css">@media (min-width: 40rem) {
+    .nav__item {
+        display: inline-block;
+    }
+    .nav__link {
+        display: inline;
+    }
+}</code></pre>
+</section>
+<section>
+    <p>Notice in the code how we set the styles to be mobile by default, and then add styles in our media query to display things correctly for larger screen sizes? That's <strong>mobile-first CSS</strong>.</p>
+    <p>Now, if we had <em>started</em> the whole process by coding while looking at the smaller viewport, rather than retroactively adding these styles, that would be <strong>mobile-first design and development</strong>.</p>
+</section>
+<section>
+    <p>In the dropdown where you had previously set the viewport to be 'iPhone X', <strong>change the value to 'Responsive'</strong>. Now resize the browser to different viewport widths and see how your page changes to suit the screen size.</p>
+</section>
+<section>
+    <p>Now that we know how make our content work for all viewports, let's dive into CSS layouts!</p>
+</section>
+<div class="body-spacer"></div>
+<section id="normalFlow">
+    <img src="/images/flow.svg" alt="" class="body-icon">
+    <h2>Normal flow</h2>
+    <p>By default, HTML renders in the browser in <strong>the same order that the content is written</strong> in the HTML file itself. The first step to a good layout is writing good, semantic HTML!</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">Default display properties</h3>
+    <p>The next step to understanding our layout is looking back to Week 2, when we discussed <a href="/posts/the-2nd-week/#blockInline" target="_blank">inline and block elements<span class="show-for-sr"> Opens in a new window</span></a>.</p>
+</section>
+<section>
+    <h4>Inline elements</h4>
+    <p>Recall that inline elements "flow" with the text around them. This is the basic state of HTML - <strong>everything's an inline element</strong> until it's declared otherwise.</p>
+</section>
+<section>
+    <h4>Block elements</h4>
+    <p>Block elements get their own horizontal space. If there is text (or another type of inline element) before it, <strong>the block gets "wrapped"</strong> onto a new line. If there is text (or another type of inline element) <em>after</em> it, <strong>the text gets "wrapped"</strong> onto a new line.</p>
+    <p>The following elements are defined as block elements in all major browsers' user-agent stylesheet (a.k.a. the default styles):</p>
+    <pre style="margin-bottom: 2rem;"><code class="language-css">/* User-agent styles say: */
+html, body, div, p, h1, h2, h3, h4, h5, h6, 
+ul, ol, address, blockquote, dd, dl, dt, 
+fieldset, form, hr, pre, header, nav, 
+section, article, aside, footer, figure, 
+figcaption, details, summary {
+    display: block;
+}</code></pre>
+</section>
+<section>
+    <h4>Inline-block elements</h4>
+    <p>There's a hybrid display property called <code>inline-block</code>. Inline-block elements "flow" with text like inline elements, but get <strong>some of the spacing properties</strong> of block elements. We'll talk more about it in the box-model section. For now, I just wanted to mention that there are four HTML elements that have a default display property of inline-block:</p>
+    <pre><code class="language-css">/* User-agent styles say: */
+button, textarea, input, select {
+    display: inline-block;
+}</code></pre>
+    <aside class="callout warning">Tables and their elements (like <code>tbody</code>, <code>td</code>, etc.) have their own special display properties, as do lists. But that's kind of a "sidebar" to what we're talking about today.</aside>
+</section>
+<div class="body-spacer"></div>
+<section>
+    <h3 class="text-center">Defining display properties in CSS</h3>
+    <p>As with all user-agent styles, it's <strong>easy to override them</strong> in our CSS!</p>
+    <pre><code class="language-css">/* This would be a mess, but there's no reason 
+you can't do it! */
+div {
+    display: inline;
+}
+span {
+    display: inline-block;
+}
+em {
+    display: block;
+}</code></pre>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">The CSS box-model</h3>
+    <img src="/images/box.svg" alt="" class="body-icon">
+    <p>So far, everything we've talked about just deals with whether or not an element gets displayed in line with text, or it gets its own horizontal space. Once we start talking about elements' <strong>height</strong>, <strong>width</strong>, and <strong>adding space inside or around</strong> things, we're talking about <strong>the CSS box-model</strong>!</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4>Border-box</h4>
+    <p>There's a CSS declaration that is going to make your life easier. <strong>Put this at the beginning of <strong>any CSS you write</strong> where you're dealing with layout.</strong></p>
+    <pre><code class="language-css">html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}</code></pre>
+    <p>There's a great explanation for why we're using this at <a href="https://css-tricks.com/box-sizing/" target="_blank">CSS Tricks<span class="show-for-sr"> Opens in a new window</span></a>.</p>
+    <p>Long story short, however: if you don't add this to your CSS, the height & width you set on your elements will <strong>not include the size of your padding or borders</strong>, which will get confusing.</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4>Height & Width</h4>
+    <p>The <code>height</code> and <code>width</code> CSS properties are values you can set on block and inline-block elements. You can use any of our <a href="/posts/the-3rd-week/#units" target="_blank">CSS units</a> to define them.</p>
+    <p>Inline elements <strong>don't care</strong> what height or width you set!</p>
+    <p class="codepen" data-height="265" data-theme-id="light" data-default-tab="result" data-user="simonborer" data-slug-hash="bGpXWXP" data-preview="true" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Height and width">
+  <span>See the Pen <a href="https://codepen.io/simonborer/pen/bGpXWXP">
+  Height and width</a> by Simon Borer (<a href="https://codepen.io/simonborer">@simonborer</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4 style="margin-top: 1rem;">Padding</h4>
+    <p><code>padding</code> is a CSS property that defines the space <em>inside</em> of the element's "box".</p>
+</section>
+<section>
+    <p>You can write it short-hand:</p>
+    <pre><code class="language-css">.my-element {
+/* will have 2rem of padding on the 
+top, right, bottom, and left */
+    padding: 2rem;
+}
+.my-other-element {
+/* will have 2rem of padding on the top, 
+1rem on the right, 1rem on the bottom, 
+and 2rem on the left */
+    padding: 2rem 1rem 1rem 2rem;
+}</code></pre>
+</section>
+<section>
+    <p>Or you can define the properties one-by-one:</p>
+    <pre><code class="language-css">.my-other-element {
+    padding-top: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}</code></pre>
+</section>
+<section>
+    <p>You can write them in any order, and you can leave some out if you don't need to define them.</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4>Border</h4>
+    <p><code>border</code>, as you might guess, is the border at the edge of the element's box.</p>
+    <p>It's written using the follow properties: width, style and colour.</p>
+    <pre><code class="language-css">.my-bordered-element {
+    border: 2px solid red;
+}</code></pre>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4 style="margin-top: 1rem;">Margin</h4>
+    <p>Margin is very similar to the padding property, except that it is the space <em>outside</em> the box, and is not used to calculate the height and width of the element.</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h4>Role of the display property in the box-model</h4>
+    <dl class="definition-list post-only">
+        <dt><code>display: block</code></dt>
+        <dd class="def-item">Doesn't share horizontal space;</dd>
+        <dd class="def-item">Cares about height & width;</dd>
+        <dd class="def-item">Cares about padding & margin;</dd>
+        <dt><code>display: inline-block</code></dt>
+        <dd class="def-item">"Flows" in-line with text;</dd>
+        <dd class="def-item">Cares about height & width;</dd>
+        <dd class="def-item">Cares about padding & margin;</dd>
+        <dt><code>display: inline</code></dt>
+        <dd class="def-item">"Flows" in-line with text;</dd>
+        <dd class="def-item">Doesn't care about height & width;</dd>
+        <dd class="def-item">Cares about about <em>vertical</em> padding & margin <em>but this doesn't affect the layout of elements around it</em>;</dd>
+        <dd class="def-item">Does care about <em>horizontal</em> padding & margin (and this <em>does</em> affect the layout of elements around it;</dd>
+    </dl>
+</section>
+<section>
+    <dl class="definition-list slide-only">
+        <dt><code>display: block</code></dt>
+        <dd class="def-item">Doesn't share horizontal space;</dd>
+        <dd class="def-item">Cares about height & width;</dd>
+        <dd class="def-item">Cares about padding & margin;</dd>
+    </dl>
+</section>
+<section>
+    <dl class="definition-list slide-only">
+        <dt><code>display: inline-block</code></dt>
+        <dd class="def-item">"Flows" in-line with text;</dd>
+        <dd class="def-item">Cares about height & width;</dd>
+        <dd class="def-item">Cares about padding & margin;</dd>
+</section>
+<section>
+    </dl>
+    <dl class="definition-list slide-only">
+        <dt><code>display: inline</code></dt>
+        <dd class="def-item">"Flows" in-line with text;</dd>
+        <dd class="def-item">Doesn't care about height & width;</dd>
+        <dd class="def-item">Cares about about <em>vertical</em> padding & margin <em>but this doesn't affect the layout of elements around it</em>;</dd>
+        <dd class="def-item">Does care about <em>horizontal</em> padding & margin (and this <em>does</em> affect the layout of elements around it;</dd>
+    </dl>
+</section>
+<section>
+    <p>Check out this demo I made for us!</p>
+    <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="simonborer" data-slug-hash="poyMPmJ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Inline, block and inline-block.">
+        <span>See the Pen <a href="https://codepen.io/simonborer/pen/poyMPmJ">
+                Inline, block and inline-block.</a> by Simon Borer (<a href="https://codepen.io/simonborer">@simonborer</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+</section>
+<div class="body-spacer"></div>
+<section id="position">
+    <img src="/images/positioning.svg" alt="" class="body-icon">
+    <h2>Positioning</h2>
+    <p>Everything in HTML is <strong>a box</strong>. By default, all of these boxes get <strong>stacked together in a row</strong> in the order that they appear in the HTML document, <strong>until they have to wrap</strong> around and start a new row. Block elements get their own row, but otherwise everything follows this principle.</p>
+    <p>We can change these rules by applying the CSS <code>position</code> property. There are five values we can give to this property in our CSS.</p>
+</section>
+<section>
+    <h3 class="text-center">Static</h3>
+    <p>This is the <strong>default value</strong> for everything. <code>position: static</code> just means that this element respects the flow of the document. You can't give a <code>static</code> element <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, or <code>z-index</code> properties (which we'll talk about in a moment).</p>
+</section>
+<section>
+    <h3 class="text-center">Relative</h3>
+    <p>Giving an element <code>position: relative</code> is similar to <code>position: static</code>, except that we can start to use the properties <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code>.</p>
+    <p>These positioning properties define where an element sits <em>relative to where it would be normally</em>.</p>
+</section>
+<section>
+    <h3 class="text-center">Absolute</h3>
+    <p>Giving an element <code>position: absolute</code> is similar to <code>position: relative</code>, except that now we're defining the element's position relative <strong>to the document</strong>, instead of the element's parent.</p>
+</section>
+<section>
+    <h3 class="text-center">Fixed</h3>
+    <p><code>position: fixed</code> doesn't care about your document. It's staying exactly where it is relative <strong>to the window</strong>. Even if you try to scroll away, it is staying in the same spot.</p>
+</section>
+<section>
+    <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="simonborer" data-slug-hash="dyMxVPO" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Positioning demo">
+        <span>See the Pen <a href="https://codepen.io/simonborer/pen/dyMxVPO">
+                Positioning demo</a> by Simon Borer (<a href="https://codepen.io/simonborer">@simonborer</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+</section>
+<section>
+    <h3 class="text-center">Sticky</h3>
+    <p>There's also <code>position: sticky</code>, which is really fun, but I'm gonna make a judgement call and say that it's a little too complicated to dig into today. It's a nice thing to have, and you can <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Sticky_positioning" target="_blank">read more about it on your own<span class="show-for-sr"> Opens in a new window</span></a>, but isn't actually that important for making a solid, functional layout.</p>
+</section>
+<div class="body-spacer"></div>
+<section id="zIndex">
+    <img src="/images/layering.svg" alt="" class="body-icon">
+    <h2>Z-index</h2>
+    <section>
+    </section>
+    <p>The z-index property is pretty simple - it defines what goes on top of what <strong>when elements overlap</strong>. Normally, it's whatever comes later in the HTML, but that can be overridden by setting this CSS property.</p>
+    <div class="callout alert">Just be wary, it can be easy to get into a fight about what element "wins" when you've got sticky menus and pop-ups and modals and overlays and dropdowns on your page.</div>
+</section>
+<section>
+    <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="simonborer" data-slug-hash="jOqgGbQ" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Z-index demo">
+        <span>See the Pen <a href="https://codepen.io/simonborer/pen/jOqgGbQ">
+                Z-index demo</a> by Simon Borer (<a href="https://codepen.io/simonborer">@simonborer</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+    </p>
+</section>
+<div class="body-spacer"></div>
+<section id="floats">
+    <img src="/images/float.svg" alt="" class="body-icon">
+    <h2>Floats</h2>
+    <p>Okay, remember when I was telling you about the bad old days when all webpages were laid out with tables?</p>
+    <p>When I started out as a front-end dev, that era had largely ended, but we were in the midst of laying out everything with floats.</p>
+    <p><strong>It sucked.</strong></p>
+</section>
+<section>
+    <p>The good news is that floats are really good <strong>at what they were designed to do</strong>.</p>
+    <p>The CSS <code>float</code> property is intended to make text (and other "inline" stuff) flow around the floated element, like an image in a newspaper.</p>
+</section>
+<section>
+    <p class="codepen" data-height="265" data-theme-id="default" data-default-tab="html,result" data-user="simonborer" data-slug-hash="dyMxVeV" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Float demo">
+        <span>See the Pen <a href="https://codepen.io/simonborer/pen/dyMxVeV">
+                Float demo</a> by Simon Borer (<a href="https://codepen.io/simonborer">@simonborer</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+        <p style="margin-top: 2rem;">You can float things left, or right, or "none" (which is the default). But if you're tempted to use it for anything more than wrapping images around text, well... I suggest you wait until you've used flexbox (the subject of our next lesson).</p>
+</section>
+<section id="lab">
+    <h2>Lab</h2>
+    <p>Since you'll be given your <a href="/supplemental/assignment-1/" target="_blank">First Assignment<span class="show-for-sr"> Opens in a new window</span></a> this week, your lab is going to be a "sneak peek" at next week's material. Send me a screenshot of you getting as far as you can in the game <a href="https://flexboxfroggy.com/" target="_blank">Flexbox Froggy<span class="show-for-sr"> Opens in a new window</span></a>. Make sure you include your computer's desktop showing the time of completion in your screenshot.</p>
+    </p>
+</section>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<div class="body-spacer"></div>
+  </div>
+</div>
+
+	
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script>
+Reveal.initialize({
+  dependencies: [{ src: '/js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    {
+      src: '/js/reveal-a11y.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }
+  ]
+});
+</script>
+
+</body>
+</html>

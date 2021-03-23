@@ -1,0 +1,27 @@
+{
+  "name": "webintro2021",
+  "version": "1.0.0",
+  "description": "Web intro course 2021",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonborer/webintro2021.git"
+  },
+  "author": "Simon Borer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonborer/webintro2021/issues"
+  },
+  "homepage": "https://github.com/simonborer/webintro2021#readme",
+  "scripts": {
+    "validate": "./validate.js",
+    "unzip": "./unzip.js"
+  },
+  "devDependencies": {
+    "csstree-validator": "^2.0.0",
+    "html-validator": "^5.1.17",
+    "postcss": "^8.2.8"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

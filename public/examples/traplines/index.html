@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    ::selection {
+        background-color: #66063a;
+    }
+
+    video {
+        object-fit: cover;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        filter: brightness(50%) blur(1px);
+    }
+
+    body {
+        background: #485a5d;
+        color: #485a5d;
+        font-family: sans-serif;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    h1,
+    p {
+        background: #f5f5f3;
+        padding: 1px 0;
+        border-radius: 1px;
+        margin: 3vh 0 0 2vw;
+        flex: 0 1 auto;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1rem;
+    }
+
+    .no-kerning {
+        letter-spacing: 4px;
+    }
+
+    .extra-kerning {
+        letter-spacing: 1.25rem;
+    }
+    </style>
+    <title>traplines</title>
+</head>
+
+<body>
+    <video playsinline autoplay muted loop id="bgvid" aria-hidden="true" preload="metadata"></video>
+    <div class="container">
+        <h1><span class="no-kerning">t</span>rap<span class="extra-kerning">l</span>ine<span class="no-kerning">s</span></h1>
+    </div>
+    <script>
+    var width = screen.width;
+    const video = {
+        small: {
+            mp4: "/video/Shoplifter_lo.mp4",
+            webm: "/video/Shoplifter_lo.webm"
+        },
+        large: {
+            mp4: "/video/Shoplifter.mp4",
+            webm: "/video/Shoplifter.webm"
+        }
+    };
+    console.log(width);
+    if (width < 1400) {
+        var videoTag =
+            '<source src="' +
+            video.small.webm +
+            '" type="video/webm"><source src="' +
+            video.small.mp4 +
+            '" type="video/mp4">';
+        console.log(videoTag);
+        document.getElementById("bgvid").innerHTML = videoTag;
+    } else {
+        var videoTag =
+            '<source src="' +
+            video.large.webm +
+            '" type="video/webm"><source src="' +
+            video.large.mp4 +
+            '" type="video/mp4">';
+        document.getElementById("bgvid").innerHTML = videoTag;
+    }
+    </script>
+</body>
+
+</html>

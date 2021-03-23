@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Archives on Intro to the Web</title>
+    <link>https://www.webintro2021.ca/archive/</link>
+    <description>Recent content in Archives on Intro to the Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jun 2020 08:47:11 +0100</lastBuildDate>
+    
+	<atom:link href="https://www.webintro2021.ca/archive/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Week 3 - Join Operations</title>
+      <link>https://www.webintro2021.ca/archive/the-3rd-week/</link>
+      <pubDate>Mon, 01 Jun 2020 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/archive/the-3rd-week/</guid>
+      <description>This week we&amp;rsquo;ll cover coding INNER JOINs to retrieve rows from multiple tables; the use of a self-join; table aliases; JOIN with implicit INNER JOIN syntax; OUTER JOINs to retrieve rows form multiple tables; the various set operators.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://www.webintro2021.ca/archive/week4notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.webintro2021.ca/archive/week4notes/</guid>
+      <description>Accessibility refresh DOM OPEN INTERNET MOBILE (Touch vs. Click) -&amp;gt; ASSISTIVE DEVICES
+what is the dom, and what does it have to do with assistive devices?
+The DOM is a model of an HTML document.
+HTML is text. The DOM is how the browser (and others) &amp;ldquo;think&amp;rdquo; about it.
+The DOM API is a set of methods for interacting with, and manipulating, the DOM via Javascript.
+Your computer has ports (USB, et al.</description>
+    </item>
+    
+  </channel>
+</rss>

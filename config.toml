@@ -1,0 +1,20 @@
+baseURL = "https://www.webintro2021.ca"
+languageCode = "en-us"
+title = "Intro to the Web"
+theme = "blnk"
+[outputFormats]
+  [outputFormats.slide]
+    mediaType = "text/html"
+    name = "slide"
+    path = "slides"
+    isHTML = "true"
+[outputs]
+  home = ["HTML", "slide"]
+  page = ["HTML", "slide"]
+  post = ["HTML", "slide"]
+[params]
+  author = "Simon Borer"
+  description = "2021 Humber Web Intro Course"
+  mainSections = ["posts"]
+[markup.goldmark.renderer]
+  unsafe= true

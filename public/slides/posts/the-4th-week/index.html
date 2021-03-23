@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/svg+xml" href="/images/browser.svg">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="manifest" href="/images/site.webmanifest">
+	<title>CSS Intro Part 2</title>
+	<meta name="description" content="2021 Humber Web Intro Course">
+	<meta name="author" content="Simon Borer">
+	
+
+<link rel="stylesheet" href="https://www.webintro2021.ca/sass/slides/main-slides.min.fb1f4c99f617f84e6338ad66926fd25d0c7d237e0133925673b14d93674cbc65.css">
+
+</head>
+<body>
+	
+<div class="reveal">
+  <div class="slides">
+    <!-- YO DUDE
+NEXT WEEK IS "FAMILY DAY"
+SO YOU NEED TO LEARN HOW TO COMPRESS THE NEXT FEW LESSONS TO INCORPORATE LESSON 5
+OR, YOU KNOW FUCKING SQUISH WORDPRESS TOGETHER
+BECAUSE FRANKLY A FEW OF THOSE WEEKS ARE BIRD CLASSES
+-->
+<div class="body-spacer--small"></div>
+<section>
+<img src="/images/chef.svg" alt="" class="body-icon">
+<h2 class="title">CSS Intro Part 2</h2></section>
+<section>
+    <p style="margin: 2rem 0; font-size: 1.25em;">Today we&#39;ll get to practice our CSS (and learn a few more tricks) by building a menu. We&#39;ll get an introduction to browser dev tools, a basic CSS reset, fonts in CSS, and how to style a menu with :pseudo selectors.</p>
+</section>
+<div class="body-spacer"></div>
+<section>
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#create">Create an external stylesheet</a></li>
+        <li><a href="#normalize">Normalize browser styles</a></li>
+        <li><a href="#semanticNav">Create semantic navigation</a></li>
+        <li><a href="#pseudo">Pseudo-classes</a></li>
+        <li><a href="#font-family">Font-family</a></li>
+        <li><a href="#devTools">Dev Tools</a></li>
+<!--         <li><a href="#mobile">Mobile-First</a></li> -->
+        <li class="post-only"><a href="#lab">Lab</a></li>
+    </ul>
+</section>
+<div class="body-spacer"></div>
+<section>
+    <figure style="margin-bottom:1rem;">
+        <img src="/images/menu.svg" alt="" class="body-icon">
+        <figcaption class="text-center">Not this kind of menu</figcaption>
+    </figure>
+</section>
+<section>
+    <h2 style="margin-top: 0">How to make a menu</h2>
+    <p>Today's lesson is going to be a practical one, which touches on a lot of the techniques we've covered in the first 3 weeks, plus some new ones.</p>
+    <p>We'll be taking a "paint-by-numbers" approach, so <strong>fire up your code editor</strong>, and follow along with the numbered steps!</p>
+    <p>I'm going to do this twice through - once to give you an overview, and the second time to stop and take questions.</p>
+    <p class="callout warning">Remember, to see your changes, you'll need to <strong>save</strong> them, and then <strong>refresh</strong> your browsers.</p>
+</section>
+<section>
+    <img src="/images/check.svg" alt="" class="body-icon body-icon--small">
+    <p style="margin-top: 2rem;">If something's not working, <strong>validate your <a href="https://validator.w3.org/nu/#textarea" target="_blank">HTML<span class="show-for-sr"> Opens in a new window</span></a> and <a href="https://jigsaw.w3.org/css-validator/#validate_by_input" target="_blank">CSS<span class="show-for-sr"> Opens in a new window</span></strong></a>. If it's still not working, <strong>go back a step</strong>.</p>
+    <p>It's great practice to <strong>write things out by hand</strong>, but if you need to copy & paste from the notes (either because a block of code is very long, or because something in your typed code isn't working as expected), that's ok, too.</p>
+</section>
+<div class="body-spacer"></div>
+<section id="create">
+    <img src="/images/external.svg" alt="" class="body-icon">
+    <h3 class="text-center">Create an external stylesheet</h3>
+    <ol class="steps">
+        <li>Start by <strong>creating a folder</strong> on your computer. Call it anything you like.</li>
+        <li>Inside this folder, <strong>create two files</strong>:
+            <ol class="steps" type="i">
+                <li>One called <code>index.html</code></li>
+                <li>One called <code>style.css</code></li>
+            </ol>
+        </li>
+    </ol>
+</section>
+<section>
+    <ol class="steps" start="3">
+        <li>In <code>index.html</code>, paste in our bare-minimum document from <a href="/posts/the-2nd-week/#metadata" target="_blank">the second week</a>.</li>
+    </ol>
+    <div class="callout slide-only"><em><br>(See the notes for the document code.)</em></div>
+    <div class="ed-container post-only" style="margin-bottom: 4rem">
+        <pre class="ed-input editor" id="edx1" data-initval="<!doctype html>&#xa;<html lang='en'>&#xa;  <head>&#xa;    <meta charset='utf-8'>&#xa;    <title></title>&#xa;  </head>&#xa;  <body>&#xa;     Gotta start somewhere.&#xa;  </body>&#xa;</html>"></pre>
+        <div class="ed-output browser-mockup" id="edx1Output"></div>
+    </div>
+</section>
+<section>
+    <ol class="steps" start="4">
+        <li>In the head, add a <code class="language-html">&lt;link&gt;</code> element.</li>
+        <li>Set the link's <code class="language-html">href</code> attribute to 'style.css'</li>
+        <li>Set the link's <code class="language-html">rel</code> attribute to 'stylesheet'</li>
+    </ol>
+    <p>
+        At this point, you should have something that looks like this:
+        <pre><code class="language-html">&lt;link href="style.css" rel="stylesheet"></code></pre>
+    </p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+<dl>
+    <dt>
+        <h4 class="text-center">What's going on here?</h4>
+    </dt>
+    <dd class="def-item">The <code>&lt;link&gt;</code> element is for <strong>creating links to external assets</strong>.</dd>
+    <dd class="def-item">99% of the time it's used for <strong>stylesheets</strong> or the icon that goes in the browser tab. </dd>
+    <dd class="def-item">The <code>&lt;link&gt;</code> element doesn't accept content (like text or other HTML), so it is a "self-closing element", meaning we don't need a closing <code>&lt;link&gt;</code> tag at the end of it.</dd>
+    <dd class="def-item post-only">The <code>rel</code> attribute is short for "relationship", and defines what relationship the external asset has with the content. In this case, <strong>it's a stylesheet</strong>.</dd>
+    <dd class="def-item post-only">The <code>href</code> attribute (short for 'hypertext reference') specifies the <strong>path to the file</strong>. This could be an external source (another website), or source in the same file system. Since the <code>style.css</code> file is in the same folder as the <code>index.html</code> file that is calling it as a resource, we can just write the name of the file, and the browser will know to find it in the same folder.</dd>
+</dl>
+</section>
+<section class="slide-only">
+    <dl>
+        <dt>
+            <h4 class="text-center">What's going on here? (Cont'd)</h4>
+        </dt>
+        <dd class="def-item">The <code>rel</code> attribute is short for "relationship", and defines what relationship the external asset has with the content. In this case, <strong>it's a stylesheet</strong>.</dd>
+        <dd class="def-item">The <code>href</code> attribute (short for 'hypertext reference') specifies the <strong>path to the file</strong>. This could be an external source (another website), or source in the same file system. Since the <code>style.css</code> file is in the same folder as the <code>index.html</code> file that is calling it as a resource, we can just write the name of the file, and the browser will know to find it in the same folder.</dd>
+    </dl>
+</section>
+<section>
+    <p>Now we've got an HTML document that calls a stylesheet.</p> 
+    <ol class="steps" start="7">
+        <li>Try opening <code>index.html</code> in your browser.</li>
+    </ol>
+</section>
+<section>
+    <p>This is probably a bit anti-climactic.</p>
+    <figure>
+        <img src="/images/start-somewhere.png" style="margin: 0 auto;display: block;" alt="A nearly blank page in the browser.">
+        <figcaption class="text-center">Cool</figcaption>
+    </figure>
+    <p>Let's add a little style, shall we?</p>
+</section>
+<section>
+    <ol class="steps" start="8">
+        <li>Open your <code>index.html</code> file in your text editor.</li>
+        <li>Add a <code>&lt;div&gt;</code> element to your html file.</li>
+        <li>Write some text in that div.</li>
+        <li>Add a class attribute to your div, and call the class <code>my-excellent-class</code></li>
+    </ol>
+    <pre><code class="language-html">&lt;!doctype html>
+&lt;html lang='en'>
+    &lt;head>
+        &lt;meta charset='utf-8'>
+        &lt;link href='style.css' rel='stylesheet'>
+        &lt;title>&lt;/title>
+    &lt;/head>
+    &lt;body>
+        &lt;div class='my-excellent-class'>Some text&lt;/div>
+    &lt;/body>
+&lt;/html></code></pre>
+</section>
+<section>
+    <ol class="steps" start="12">
+        <li>Open your <code>style.css</code> file in your text editor.</li>
+        <li>Add the CSS code below:</li>
+    </ol>
+    <pre><code class="language-css">.my-excellent-class {
+    font-size: 2rem;
+    color: red;
+}</code></pre>
+</section>
+<section>
+<ol class="steps" start="14" style="margin-top: 1rem;">
+    <li>Now refresh your browser</li>
+    </ol>
+    <figure>
+        <img src="/images/getting-somewhere.png" style="margin: 0 auto;display: block;" alt="A page with styled text in the browser.">
+        <figcaption class="text-center">Slightly cooler?</figcaption>
+    </figure>
+</section>
+<div class="body-spacer"></div>
+<section>
+    <img src="/images/fireworks.svg" alt="" class="body-icon" style="margin-bottom: 2rem;">
+    <p><strong>Congratulations!</strong> You have successfully styled an HTML document using an external stylesheet!</p>
+</section>
+<div class="body-spacer"></div>
+<section id="normalize">
+    <img src="/images/browser-styles.svg" alt="" class="body-icon">
+    <h2>Normalizing browser styles</h2>
+</section>
+<section>
+    <p>The next thing we'll do is add a stylesheet that someone else is providing for us.</p>
+    <p>This is probably <strong>the world's most popular stylesheet</strong>, and we get it for free!</p>
+    <p>'Normalize.css' does one job - and it's not that exciting, but it will save us a lot of headaches.</p>
+</section>
+<section>
+    <p>Remember last week when we talked about <strong>'<a href="/posts/the-3rd-week/#howTheCascade" target="_blank">user-agent styles</a>'</strong>? These are the styles that the browser applies as defaults. Unfortunately, not every browser has the same defaults.</p>
+    <img src="/images/zombie.svg" alt="" class="body-icon">
+</section>
+<section>
+    <p>The purpose of normalize.css is, as the name suggests, to make the default styles <strong>the same on every browser</strong>. This means that you're not starting out seeing things differently in different browsers. You'll still need to check different browsers to make sure your custom styles are working properly across the board, but at least this way we know we're not starting at a disadvantage.</p>
+</section>
+<section>
+    <ol class="steps" start="15">
+        <li><a href="https://necolas.github.io/normalize.css/" target="_blank">Download normalize.css</a> (you'll likely want to right-click the 'Download' button on the normalize.css webpage, and select 'Save Link As...')</li>
+        <li>Move the downloaded file into your project folder, along with <code>style.css</code> and <code>index.html</code></li>
+        <li>Add the following code <strong>before</strong> you call <code>style.css</code>:</li>
+    </ol>
+    <pre><code class="language-html">&lt;link rel="stylesheet" href="normalize.css"></code></pre>
+</section>
+<section>
+    <p>If you save your html file and refresh your browser, you'll likely only see the slightest change in your webpage. The difference is that now you know that what <strong>you're seeing in your browser is <em>exactly the same</em></strong> across Chrome, Firefox, Internet Explorer, etc.</p>
+    <div class="callout primary">I strongly encourage you to r<strong>ead normalize.css</strong>. It has comments that explain what it is doing each step of the way!</div>
+</section>
+<div class="body-spacer"></div>
+<section id="semanticNav">
+    <img src="/images/map.svg" alt="" class="body-icon">
+    <h2>Semantic navigation</h2>
+    <p>Now that we're ready to start styling our page - let's put something there!</p>
+    <p>We're going to <strong>create a navigation menu</strong>. But first, we need some things on our page to navigate <em>to</em>. I'm going to help you cheat a little by giving you some CSS to create page sections.</p>
+</section>
+<section>
+    <ol class="steps" start="18">
+        <li>Create 4 <code class="language-html">&lt;section&gt;</code> elements in the body of your page. (Don't forget to close each element!)</li>
+        <li>Give each element the class <code class="language-css">section--page</code>.</li>
+        <li>Inside each <code class="language-html">&lt;section&gt;</code>, write some unique text, so that you can identify which section is which.</li>
+        <li>In your <code>style.css</code> file, paste the following code:</li>
+    </ol>
+    <pre><code class="language-css">.section--page {
+    min-height: 55vh;
+    padding: 2rem 1rem 1rem;
+}
+.section--page:nth-of-type(odd) {
+    background: #d5d5d5;
+}</code></pre>
+</section>
+<section>
+    <p>Now we have things to navigate to!</p>
+    <p>We can now go ahead and <strong>create our navigation</strong>.</p>
+</section>
+<section>
+    <ol class="steps" start="22">
+        <li><strong>Before the section elements</strong>, create a <code class="language-html">&lt;nav&gt;</code> element in the body of your page.</li>
+        <li>Inside the nav element, create a list with 4 list items.</li>
+        <li>Inside each list item, create an anchor tag.</li>
+        <li>Inside the anchor tags, write 'Section 1', 'Section 2', etc.</li>
+    </ol>
+</section>
+<section>
+    <p class="post-only">At this point, your html file should look like this:</p>
+    <pre class="post-only"><code class="language-html">&lt;!doctype html>
+&lt;html lang='en'>
+&lt;head>
+    &lt;meta charset='utf-8'>
+    &lt;link rel='stylesheet' href='normalize.css'>
+    &lt;link href='style.css' rel='stylesheet'>
+    &lt;title>&lt;/title>
+&lt;/head>
+&lt;body>
+    &lt;nav>
+        &lt;ul>
+            &lt;li>&lt;a href=''>Section 1&lt;/a>&lt;/li>
+            &lt;li>&lt;a href=''>Section 2&lt;/a>&lt;/li>
+            &lt;li>&lt;a href=''>Section 3&lt;/a>&lt;/li>
+            &lt;li>&lt;a href=''>Section 4&lt;/a>&lt;/li>
+        &lt;/ul>
+    &lt;/nav>
+    &lt;section class='section--page'>This is section 1&lt;/section>
+    &lt;section class='section--page'>This is section 2&lt;/section>
+    &lt;section class='section--page'>This is section 3&lt;/section>
+    &lt;section class='section--page'>This is section 4&lt;/section>
+&lt;/body>
+&lt;/html></code></pre>
+<p><span class="post-only">And w</span><span class="slide-only">W</span>hen you refresh your browser, it should look something like this:</p>
+<img src="/images/browser-sections.png" alt="A webpage with distinct sections">
+</section>
+<section>
+<p>There's only one thing left to do before we have a functional navigation.</p>
+<ol class="steps" start="26">
+    <li>Give each section a unique id.</li>
+    <li>Give each anchor an href corresponding to that id, prefixed with <code>#</code></li>
+</ol>
+<pre class="post-only"><code class="language-html">&lt;!doctype html>
+&lt;html lang='en'>
+&lt;head>
+    &lt;meta charset='utf-8'>
+    &lt;link rel='stylesheet' href='normalize.css'>
+    &lt;link href='style.css' rel='stylesheet'>
+    &lt;title>&lt;/title>
+&lt;/head>
+&lt;body>
+    &lt;nav>
+        &lt;ul>
+            &lt;li>&lt;a href='#section1'>Section 1&lt;/a>&lt;/li>
+            &lt;li>&lt;a href='#section2'>Section 2&lt;/a>&lt;/li>
+            &lt;li>&lt;a href='#section3'>Section 3&lt;/a>&lt;/li>
+            &lt;li>&lt;a href='#section4'>Section 4&lt;/a>&lt;/li>
+        &lt;/ul>
+    &lt;/nav>
+    &lt;section 
+        class='section--page'
+        id="section1">This is section 1&lt;/section>
+    &lt;section 
+        class='section--page'
+        id="section2">This is section 2&lt;/section>
+    &lt;section 
+        class='section--page'
+        id="section3">This is section 3&lt;/section>
+    &lt;section 
+        class='section--page'
+        id="section4">This is section 4&lt;/section>
+&lt;/body>
+&lt;/html></code></pre>
+<p>Save index.html and refresh your browser. Now try clicking on any of the links in the nav!</p>
+</section>
+<section>
+<ol class="steps" start="28">
+    <li>In your html file, give your navigation list (the <code>ul</code> element) the class <code>nav</code>.</li>
+    <li>In your html file, give each list item in your navigation a class of <code>nav__item</code>.</li>
+    <li>Also in your html file, give each anchor in your navigation a class of <code>nav__link</code>.</li>
+    <li>In your CSS file, add the following code:</li>
+</ol>
+<pre><code class="language-css">.nav {
+    padding: 0;
+}
+.nav__item {
+    list-style:none;
+    display: inline-block;
+}
+.nav__link {
+    padding: 1rem;   
+}</code></pre>
+</section>
+<div class="body-spacer"></div>
+<section id="pseudo">
+    <img src="/images/spy.svg" alt="" class="body-icon">
+    <h2>Pseudo-classes</h2>
+    <p>Pseudo-classes are weird... but fun.</p>
+</section>
+<section>
+    <p>As the name suggests, they are not quite classes, but they are categories of elements that you can select in your CSS. You can recognize them, as they're prefixed with a colon.</p><p>There's actually <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes" target="_blank">a bunch of them</a>, but today we'll just look at one - <code>:hover</code> (although, if you've been paying close attention, we've already used a different one in our CSS).</p>
+</section>
+<div class="body-spacer--small"></div>
+<section>
+    <h3 class="text-center">Hover</h3>
+    <img src="/images/ufo.svg" alt="" class="body-icon">
+    <p>The <code>:hover</code> pseudo-class lets us write style rules for links that <strong>only apply when the user hovers over the element</strong>.</p>
+</section>
+<section>
+    <ol class="steps" start="32">
+        <li>Add the following to your CSS file:</li>
+    </ol>
+    <pre><code class="language-css">.nav__link:hover {
+    background: purple;
+    color: white;
+}</code></pre>
+    <p>Now reload your html file in the browser and hover over your navigation menu.</p>
+</section>
+<section>
+    <p>Geez, this is starting to look like <strong>a real website</strong>, isn't it?</p>
+    <p>Let's add one more thing that will make it feel much more "web&#8209;ready".</p>
+</section>
+<div class="body-spacer"></div>
+<section id="font-family">
+    <img src="/images/font.svg" alt="" class="body-icon">
+    <h2>Font-family</h2>
+    <p><code class="language-css">font-family</code> is a CSS property that defines the font of our CSS elements.</p>
+</section>
+<section>
+    <p>In weeks to come, we'll use it to load custom fonts, but today we'll make use of fonts that the user <strong>already has installed</strong> on their computer.</p>
+    <p>You can add this property to any rule, but you probably want to start by defining the basic font that will be the default for all your elements.</p>
+    <ol class="steps" start="33">
+        <li>Add the following <strong>at the beginning</strong> of your CSS file</li>
+    </ol>
+    <pre><code class="language-css">body {
+    font-family: Roboto, sans-serif;
+}</code></pre>
+</section>
+<section>
+    <p>The browser will go through this list, from the first item ("Roboto") to the last ("sans-serif") <strong>until it can find a font</strong> installed on the user's computer that matches.</p>
+    <p>In our list, most Android users will have "Roboto" installed, but most Mac and Windows computers won't. The generic 'sans-serif' will load Helvetica on Mac and Arial on Windows (the default fonts of that font type).</p>
+    <p>Honestly, you can probably just write <code class="language-css">font-family: sans-serif;</code>, I just wanted to show you how the fallback works.</p>
+</section>
+<div class="body-spacer"></div>
+<section id="devTools">
+    <img src="/images/tools.svg" alt="" class="body-icon">
+    <h2 style="margin-top: 0">Dev Tools</h2>
+</section>
+<section>
+    <p>Look at the page you've been building in the browser.</p>
+    <p><strong>Right-click</strong> anywhere on the page, and choose <strong>"inspect"</strong>.</p>
+    <img src="/images/inspect.png" alt="">
+</section>
+<section>
+    <p>You'll have a window pop up. These are your "browser tools", also known as the "dev tools".</p>
+    <figure>
+        <a href="/images/inspected.png" target="_blank"><img src="/images/inspected.png" alt=""></a>
+        <figcaption class="text-center">You might need to choose "Elements" from the tabs at the top to see what I'm seeing.</figcaption>
+    </figure>
+</section>
+<section>
+    <p>You'll see what looks like your html file. Click on any one of those lines and you'll <strong>see what CSS rules have been applied to it</strong>, including from the user-agent styles.</p>
+</section>
+<section>
+    <p>You can alter these rules, or add new ones and try things out in the browser.</p>
+    <img src="/images/devtoolsAction.png" alt="">
+</section>
+<section>
+    <p>This is <strong>just a "sandbox"</strong>, however. None of your changes are saved, so when you refresh the browser, those changes will be gone.</p>
+</section>
+<!-- <section>
+    <h3 class="text-center">Dev tools mobile emulator</h3>
+    <p>There's a <em>ton</em> of tools in the dev tools, but I just want to show you one today. There's button in the top-left (top-right if you're in Firefox) of the dev tools that kinda looks like a phone and a tablet.</p>
+</section>
+<section>
+    <a href="/images/mobileEmulator.png" target="_blank"><img src="/images/mobileEmulator.png" alt=""></a>
+    <p>If you click on that button, you can your site rendered in a kind of a mock-up of different devices.</p>
+</section>
+<section>
+    <p>Do this now, and choose 'iPhone X' from the dropdown.</p>
+    <p>Your page looks kinda weird and tiny, doesn't it?</p>
+</section>
+<section>
+    <h3 class="text-center">The viewport meta tag</h3>
+    <img src="/images/viewport.svg" alt="" class="body-icon">
+</section>
+<section>
+    <p>Remember two weeks ago when I said there were a bunch of different meta tags, and you were like, "Oh man, I can't wait until we learn about more meta tags!"</p>
+    <p>Well, the wait is over. I'd like to introduce you to a meta tag that you should put in all your html documents:</p>
+    <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1"></code></pre>
+</section>
+<section>
+    <p>There's an <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag" target="_blank">in-depth explanation<span class="show-for-sr"> Opens in a new window</span></a> for why this meta tag is necessary, but essentially what it does is tell the browser "I've built this page so that it works with different screen sizes".</p>
+    <ol class="steps" start="34">
+        <li>Add the viewport meta tag to your html file in the head before the stylesheets.</li>
+    </ol>
+</section>
+    <p>Just as a check-in, here's what our html file should look like at this point:</p>
+    <pre><code class="language-html">&lt;!doctype html>
+&lt;html lang='en'>
+&lt;head>
+    &lt;meta charset='utf-8'>
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+    &lt;link rel='stylesheet' href='normalize.css'>
+    &lt;link href='style.css' rel='stylesheet'>
+    &lt;title>&lt;/title>
+&lt;/head>
+&lt;body>
+    &lt;nav>
+        &lt;ul class="nav">
+            &lt;li class="nav__item">
+                &lt;a class="nav__link" href='#section1'>Section 1&lt;/a>
+            &lt;/li>
+            &lt;li class="nav__item">
+                &lt;a class="nav__link" href='#section2'>Section 2&lt;/a>
+            &lt;/li>
+            &lt;li class="nav__item">
+                &lt;a class="nav__link" href='#section3'>Section 3&lt;/a>
+            &lt;/li>
+            &lt;li class="nav__item">
+                &lt;a class="nav__link" href='#section4'>Section 4&lt;/a>
+            &lt;/li>
+        &lt;/ul>
+    &lt;/nav>
+    &lt;section class='section--page' id="section1">This is section 1&lt;/section>
+    &lt;section class='section--page' id="section2">This is section 2&lt;/section>
+    &lt;section class='section--page' id="section3">This is section 3&lt;/section>
+    &lt;section class='section--page' id="section4">This is section 4&lt;/section>
+&lt;/body>
+&lt;/html></code></pre>
+<p>And here's our CSS:</p>
+<pre><code class="language-css">body {
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.my-excellent-class {
+    font-size: 2rem;
+    color: red;
+}
+.section--page {
+    height: 55vh;
+    padding: 2rem 1rem 1rem;
+}
+.section--page:nth-of-type(odd) {
+    background: #d5d5d5;
+}
+.nav {
+    padding: 0;
+}
+.nav__item {
+    list-style:none;
+    display: inline-block;
+}
+.nav__link {
+    padding: 1rem;  
+}
+.nav__link:hover {
+    background: purple;
+    color: white;
+}</code></pre>
+<p>Here's our finishing touch: making this page work well at all screen sizes.</p>
+<div class="body-spacer"></div>
+<section id="mobile">
+    <img src="/images/moving.svg" alt="" class="body-icon">
+    <h2>Mobile-first</h2>
+    <p>You may have heard of 'responsive' websites. That just means that our content works well at all screen sizes - growing or shrinking content, and moving around the layout in order to be easy to use on the smallest phone, the biggest monitor or the most... medium-sized iPad.</p>
+</section>
+<section>
+    <p>Mobile-first is a design & development technique that says we should design and build at the smallest size first, and then add rules where needed as the viewport expands.</p>
+    <p>This makes life easier for the same reason that it's easier to move from a small apartment to a big house, rather than from a big house to a small apartment.</p>
+</section>
+<section>
+    <h3 class="text-center">Media queries</h3>
+    <img src="/images/query.svg" alt="" class="body-icon--small">
+</section>
+<section>
+    <p>You've already got some excellent techniques for writing HTML & CSS that flows perfectly into any viewport size - semantic code, responsive units like <code>vw</code> and <code>vh</code> - and starting next week we'll learn how to make elegant, fluid layouts.</p>
+    <p>But when your content doesn't respond natively, the go-to method for writing different rules for different viewport widths is a CSS media query.</p>
+</section>
+<section>
+    <p>The syntax is simple:</p>
+    <pre><code class="language-css">@media (min-width: 40rem) {
+    .my-excellent-class {
+        background: green;
+    }
+}</code></pre>
+</section>
+<section>
+    <p>Media queries are included in your stylesheet <em>at the end, to avoid specificity issues</em>.</p>
+</section>
+<section>
+    <ol class="steps" start="35">
+        <li>Rewrite the <code>display</code> property for the <code>nav__item</code> class to be <code class="language-css">display: block;</code></li>
+        <li>Add a <code>display</code> property to your <code>nav__link</code> class, and make the value <code class="language-css">display: block;</code></li>
+        <li>Add the following code to the <strong>bottom</strong> of your css file:</li>
+    </ol>
+    <pre><code class="language-css">@media (min-width: 40rem) {
+    .nav__item {
+        display: inline-block;
+    }
+    .nav__link {
+        display: inline;
+    }
+}</code></pre>
+</section>
+<section>
+<p>Notice in the code how we set the styles to be mobile by default, and then add styles in our media query to display things correctly for larger screen sizes? That's mobile-first CSS.</p>
+<p>Now, if we had <em>started</em> the whole process by coding while looking at the smaller viewport, rather than retroactively adding these styles, that would be mobile-first design and development.</p>
+<p>In the dropdown where you had previously set the viewport to be 'iPhone X', change the value to 'Responsive'. Now resize the browser to different viewport widths and see how your page changes to suit the screen size.</p>
+</section> -->
+<section>
+    <div class="h2">Isn't that cool?</div>
+</section>
+<div class="body-spacer"></div>
+<h2 id="lab">Here's today's lab work:</h2>
+<p>Work off of the file you've created during today's lesson (unless you want extra practice)!</p>
+<ol>
+    <li>Create a web page with 6 different sections and a page heading.</li>
+    <li>Near the top of your page, include a menu that links to all 6 sections, plus one external link.</li>
+    <li>Choose a topic. Add content to each of the 6 sections, including:
+        <ol type="i">
+            <li>A heading for each section.</li>
+            <li>An image.</li>
+            <li>A paragraph, including text, and at least one anchor tag.</li>
+        </ol>
+    </li>
+    <li>Using an external stylesheet, give different <code>:hover</code> styles to your navigation links and the links in your page content.</li>
+    <!-- <li>Make the font size larger on smaller screens.</li> -->
+</ol>
+<p>Create a zip file from the folder that contains both your web page (the html file) and the css file, and submit this on Blackboard.</p>
+<p>Download the <a href="/files/demo-menu.zip" target="_blank">starter files</a>.</p>
+  </div>
+</div>
+
+	
+<script type="text/javascript" src="/js/reveal.js"></script>
+<script>
+Reveal.initialize({
+  dependencies: [{ src: '/js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    {
+      src: '/js/reveal-a11y.js',
+      async: true,
+      condition: function() {
+        return !!document.body.classList;
+      }
+    }
+  ]
+});
+</script>
+
+</body>
+</html>

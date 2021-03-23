@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Supplementals on Intro to the Web</title>
+    <link>https://www.webintro2021.ca/supplemental/</link>
+    <description>Recent content in Supplementals on Intro to the Web</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Jan 2021 08:47:11 +0100</lastBuildDate>
+    
+	<atom:link href="https://www.webintro2021.ca/supplemental/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Assignment 1</title>
+      <link>https://www.webintro2021.ca/supplemental/assignment-1/</link>
+      <pubDate>Mon, 18 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/supplemental/assignment-1/</guid>
+      <description>This is your first assignment</description>
+    </item>
+    
+    <item>
+      <title>Assignment 2</title>
+      <link>https://www.webintro2021.ca/supplemental/assignment-2/</link>
+      <pubDate>Mon, 18 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/supplemental/assignment-2/</guid>
+      <description>This is your second assignment</description>
+    </item>
+    
+    <item>
+      <title>Assignment 3</title>
+      <link>https://www.webintro2021.ca/supplemental/assignment-3/</link>
+      <pubDate>Mon, 18 Jan 2021 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.webintro2021.ca/supplemental/assignment-3/</guid>
+      <description>This is your final assignment</description>
+    </item>
+    
+  </channel>
+</rss>

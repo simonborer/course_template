@@ -1,0 +1,62 @@
+{{ define "main" }}
+	<main class="post">
+		<article>
+			<div class="hero hero--page" style="background-image:url('/images/{{ .Params.featured_image }}')">
+				<nav class="page-nav">
+					<a class="button small primary page-nav__link" href="{{ .Site.BaseURL }}">Home</a>
+					{{ if in .File.Path "posts" }}
+					<a class="button small primary page-nav__link" href="/slides{{ .RelPermalink }}">Slides</a>
+					{{ end }}
+				</nav>
+				<h1 class="page-title">{{ .Title }}</h1>
+			</div>
+			<div class="grid-container">
+				<div class="grid-x">
+					<div class="cell large-6 large-offset-3 medium-10 medium-offset-1">{{ .Content }}</div>
+									
+				</div>
+			</div>
+		</article>
+	</main>
+{{ end }}
+{{ define "scripts" }}
+<script type="text/javascript" src="{{ .Site.BaseURL }}/js/prism.js"></script>
+<script type="text/javascript">let t,e;const n=new Set,o=document.createElement("link"),iDefine=o.relList&&o.relList.supports&&o.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype,s="instantAllowQueryString"in document.body.dataset,a="instantAllowExternalLinks"in document.body.dataset,r="instantWhitelist"in document.body.dataset,c="instantMousedownShortcut"in document.body.dataset,d=1111;let l=65,u=!1,f=!1,m=!1;if("instantIntensity"in document.body.dataset){const t=document.body.dataset.instantIntensity;if("mousedown"==t.substr(0,"mousedown".length))u=!0,"mousedown-only"==t&&(f=!0);else if("viewport"==t.substr(0,"viewport".length))navigator.connection&&(navigator.connection.saveData||navigator.connection.effectiveType&&navigator.connection.effectiveType.includes("2g"))||("viewport"==t?document.documentElement.clientWidth*document.documentElement.clientHeight<45e4&&(m=!0):"viewport-all"==t&&(m=!0));else{const e=parseInt(t);isNaN(e)||(l=e)}}if(iDefine){const n={capture:!0,passive:!0};if(f||document.addEventListener("touchstart",function(t){e=performance.now();const n=t.target.closest("a");if(!h(n))return;v(n.href)},n),u?c||document.addEventListener("mousedown",function(t){const e=t.target.closest("a");if(!h(e))return;v(e.href)},n):document.addEventListener("mouseover",function(n){if(performance.now()-e<d)return;const o=n.target.closest("a");if(!h(o))return;o.addEventListener("mouseout",p,{passive:!0}),t=setTimeout(()=>{v(o.href),t=void 0},l)},n),c&&document.addEventListener("mousedown",function(t){if(performance.now()-e<d)return;const n=t.target.closest("a");if(t.which>1||t.metaKey||t.ctrlKey)return;if(!n)return;n.addEventListener("click",function(t){1337!=t.detail&&t.preventDefault()},{capture:!0,passive:!1,once:!0});const o=new MouseEvent("click",{view:window,bubbles:!0,cancelable:!1,detail:1337});n.dispatchEvent(o)},n),m){let t;(t=window.requestIdleCallback?t=>{requestIdleCallback(t,{timeout:1500})}:t=>{t()})(()=>{const t=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const n=e.target;t.unobserve(n),v(n.href)}})});document.querySelectorAll("a").forEach(e=>{h(e)&&t.observe(e)})})}}function p(e){e.relatedTarget&&e.target.closest("a")==e.relatedTarget.closest("a")||t&&(clearTimeout(t),t=void 0)}function h(t){if(t&&t.href&&(!r||"instant"in t.dataset)&&(a||t.origin==location.origin||"instant"in t.dataset)&&["http:","https:"].includes(t.protocol)&&("http:"!=t.protocol||"https:"!=location.protocol)&&(s||!t.search||"instant"in t.dataset)&&!(t.hash&&t.pathname+t.search==location.pathname+location.search||"noInstant"in t.dataset))return!0}function v(t){if(n.has(t))return;const e=document.createElement("link");e.rel="prefetch",e.href=t,document.head.appendChild(e),n.add(t)}</script>
+	{{ if and (isset .Params "editor") (in .File.Path "posts") }}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-html.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/theme-tomorrow_night_eighties.min.js" integrity="sha512-ZpoDdz3A/zV2aKTjH8fcyDKhg+zOuu423OkuJ7SvK1jMRZUSkTtH1YQQS10pqNvi9CYT2jmtOCxuNQW9TEtHdw==" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var update = function(ed) {
+		  var val = ed.getSession().getValue();
+		  var divecho = document.getElementById(ed.container.id + "Output");
+		  divecho.innerHTML = val;
+		}
+		ace.config.setModuleUrl('ace/mode/html_worker', '{{ .Site.BaseURL }}/js/worker-html.js');
+		var editors = document.querySelectorAll(".editor");
+		editors.forEach(function(editorElem) {
+		    var editor = ace.edit(editorElem, {
+		    	maxLines: 30,
+        		minLines: 2
+		    });
+		    editor.setTheme("ace/theme/tomorrow_night_eighties");
+		    editor.session.setMode("ace/mode/html");
+		    // editor.session.setOption("firstLineNumber", 0);
+		    editor.session.setOption("wrap", true);
+
+		    // var initVal = "<!DOCTYPE html>\n";
+		    var initVal = "";
+		    if (editorElem.dataset.initval) {
+		    	console.log(editorElem.dataset.initval);
+		    	initVal += editorElem.dataset.initval;
+		    }
+			editor.setValue(initVal);
+			editor.getSession().on('change', function() {
+		  		update(editor);
+			});
+			update(editor);
+		});
+
+	</script>
+	{{ end }}
+{{ end }}

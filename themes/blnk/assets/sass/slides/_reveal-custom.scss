@@ -1,0 +1,252 @@
+.slides> :not(section) {
+    display: none;
+}
+
+.reveal {
+    font-size: 2rem;
+}
+
+.reveal figcaption {
+    font-size: 1rem;
+}
+
+.reveal li>ol {
+    list-style-type: lower-alpha;
+}
+
+.post-only,
+.reveal ul.post-only {
+    display: none !important;
+}
+
+.show-for-sr {
+    font-size: 0;
+}
+
+.reveal blockquote {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-align: left;
+    padding: 1rem 2rem;
+
+    & p {
+        margin: 1rem 0;
+    }
+
+    & cite {
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.toc {
+    font-size: 2rem;
+}
+
+.toc ul {
+    font-size: 1rem;
+}
+
+.reveal ol.toc ul {
+    margin-left: 0;
+}
+
+.reveal table {
+    font-size: 1.75rem;
+}
+
+.reveal pre {
+    font-size: 1em;
+}
+
+.reveal .diagram,
+.reveal img {
+    background: #ffffff;
+    max-height: 45vh;
+}
+
+@mixin sideby {
+    display: inline-block;
+    margin-right: 1rem;
+    max-width: calc(50% - 1rem);
+    margin-bottom: .25rem;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+}
+
+.reveal .side-by-cells {
+    @include sideby;
+}
+
+.reveal .side-by {
+    & img {
+        @include sideby;
+    }
+}
+
+script[type="text/plain"] {
+    display: block;
+}
+
+.reveal ul.no-bullet {
+    margin-left: 0;
+}
+
+.reveal ul {
+    margin-left: 0;
+}
+
+.reveal .no-bullet li {
+    list-style: none;
+}
+
+.reveal p {
+    text-align: left;
+}
+
+@mixin body-icon {
+    max-width: 50vw;
+    max-height: 20vh;
+    min-height: 10vh;
+    min-width: 20vw;
+    border: 0 solid transparent;
+}
+
+.reveal section .body-icon--slide-only {
+    max-width: 50vw;
+    max-height: 35vh;
+    border: 0 solid transparent;
+}
+
+.reveal section .body-icon {
+    @include body-icon;
+    background: none;
+    margin-bottom: 2rem;
+
+    &--white-bg {
+        @include body-icon;
+        background: white;
+
+        &.body-icon--large {
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+    }
+
+    &.body-icon--small {
+        max-width: 10vw;
+    }
+}
+
+.reveal .body-icon--xl {
+    @include body-icon;
+    max-height: 40vh;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+        color: red;
+        background: lightgrey;
+    }
+
+    to {
+        transform: rotate(360deg);
+        color: gold;
+        background: darkgrey;
+    }
+}
+
+.rotating {
+    animation: rotating 10s linear infinite;
+    display: inline-block;
+    margin: 1rem auto;
+    font-size: 4rem;
+    font-weight: 900;
+    font-family: monospace;
+    padding: 2rem 1.5rem;
+    border-radius: 50%;
+}
+
+.reveal .def-item {
+    display: list-item;
+    list-style: normal;
+    margin-left: 1rem;
+}
+
+.reveal strong {
+    color: #ffc4b1;
+}
+
+.reveal .slide-block {
+    display: block;
+    margin-top: 1em;
+}
+
+.reveal .checklist {
+    list-style: none;
+
+    & li {
+        &:before {
+            font-size: 2em;
+            line-height: .75;
+            vertical-align: bottom;
+            display: inline-block;
+            margin-right: .25em;
+            content: "☐"
+        }
+
+        &.checked:before {
+            content: "☑";
+            color: #0a8236;
+        }
+
+        &.crossed:before {
+            content: "☒";
+            color: #a53b2a;
+        }
+    }
+}
+
+.grid-slide {
+    display: flex;
+    flex-wrap: nowrap;
+
+    & .cell.large-6 {
+        flex-basis: 50%;
+
+        & img {
+            margin: 0 0 .5rem;
+        }
+    }
+}
+
+.poetry {
+    box-sizing: border-box;
+    color: black;
+    text-align: left;
+    font-size: 2.25rem;
+    font-family: cursive;
+    padding: 2.5rem 2rem;
+    width: 37.5rem;
+    height: 23.75rem;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 14rem;
+    padding-top: 3rem;
+    background-image: url('/images/quill.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &::selection {
+        background: #a8d1ff;
+    }
+
+    &::-moz-selection {
+        background: #a8d1ff;
+    }
+}
