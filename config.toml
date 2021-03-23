@@ -1,6 +1,6 @@
-baseURL = "https://www.webintro2021.ca"
+baseURL = ""
 languageCode = "en-us"
-title = "Intro to the Web"
+title = "Course Template"
 theme = "blnk"
 [outputFormats]
   [outputFormats.slide]
@@ -14,7 +14,7 @@ theme = "blnk"
   post = ["HTML", "slide"]
 [params]
   author = "Simon Borer"
-  description = "2021 Humber Web Intro Course"
+  description = "Humber HTTP* Course Template"
   mainSections = ["posts"]
 [markup.goldmark.renderer]
   unsafe= true

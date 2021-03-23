@@ -1,15 +1,15 @@
 {
-  "name": "webintro2021",
+  "name": "Course Template",
   "version": "1.0.0",
-  "description": "Web intro course 2021",
+  "description": "Starter kit for Humber HTTP* course sites",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simonborer/webintro2021.git"
+    "url": "git+https://github.com/simonborer/course_template.git"
   },
   "author": "Simon Borer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simonborer/webintro2021/issues"
+    "url": "https://github.com/simonborer/course_template/issues"
   },
-  "homepage": "https://github.com/simonborer/webintro2021#readme"
+  "homepage": "https://github.com/simonborer/course_template#readme"
 }
